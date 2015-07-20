@@ -8,45 +8,30 @@ mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/project1');
 // tell app to use bodyParser middleware
 app.use(bodyParser.urlencoded({extended: true}));
 
-// set up root route to respond with 'hello world'
+// // set up root route to respond with 'hello world'
+// app.get('/', function (req, res) {
+//   res.send('hello world');
+// });
+
+//GET STATIC ROUTES//
+app.use(express.static(__dirname + '/public'));
+//get static index
 app.get('/', function (req, res) {
-  res.send('hello world');
+  res.sendFile(__dirname + '/public/views/index.html');
 });
-
-
-// var Line = require('./line');
-
-// // OPEN THE API TO REQUESTS FROM ANY DOMAIN
-// app.use(cors());
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-// app.use(express.static(__dirname));
-
-// app.get('/', function(req, res) {
-//   var index = __dirname + "/index.html";
-//   res.sendFile(index);
+//get static js
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/public/js/route_magic.js');
+});
+//get statis css
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/public/css/route_style.css' );
+});
+// //get static image
+// app.get('/', function (req, res) {
+//   res.sendFile(__dirname + '/public/images/honnold.jpg' );
 // });
 
-// // LINES#QUERY
-// app.get('/api/lines', function(req, res) {
-//   console.log(Line);
-//   Line.find().sort('-_id').exec(function(err, lines) {
-//     console.log(lines);
-//     res.json(lines);
-//   });
-// });
-
-// // LINES#CREATE
-// app.post('/api/lines', function(req, res) {
-//   // SAVE LINE TO DB
-//   var line = new Line({
-//     text: req.body.text
-//   });
-
-//   line.save(function(err, line) {
-//     res.json(line);
-//   });
-// });
 
 // listen on port 3000
 app.listen(3000, function () {
