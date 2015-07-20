@@ -10,8 +10,9 @@ mongoose.connect(
   'mongodb://localhost/project1' // plug in the db name you've been using
 );
 
-// tell app to use bodyParser middleware
+// middleware
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/public'));
 
 // // set up root route to respond with 'hello world'
 // app.get('/', function (req, res) {
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // });
 
 //GET STATIC ROUTES//
-app.use(express.static(__dirname + '/public'));
+
 //get static index
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/views/index.html');
