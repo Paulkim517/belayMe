@@ -4,7 +4,12 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/project1');
+mongoose.connect(
+  process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+  'mongodb://localhost/project1' // plug in the db name you've been using
+);
+
 // tell app to use bodyParser middleware
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -34,8 +39,8 @@ app.get('/', function (req, res) {
 
 
 // listen on port 3000
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000)
   console.log("It's ALIVE!!");
-});
+
 
 
