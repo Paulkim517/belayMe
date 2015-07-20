@@ -59,19 +59,24 @@
 	
 			</div> 
 		</div> 
-	<!-- list of all message -->
-  <div id="belayList"></div>
-  <!-- underscore template -->
-	<script type="text/template" id="belay-template">
-    <div class="belay">
-      <p>
-        <span class="belay-text"><%= userName %> - <%= location %>- <%= message %></span>
-        &nbsp;
-        
-      </p>
-      <hr>
-    </div>
-  </script>
+			<div class="col-md-6 col-sm-8">
+        <div class="panel panel-default">
+          <div class="panel-heading"></div>
+          <!-- list of posts -->
+          <ul class="list-group" id="post-list">
+            <!-- underscore template for posts -->
+            <script type="text/template" id="belay-template">
+              <li class="list-group-item">
+                <span class="label label-success"><%= user name %></span>
+                &nbsp;
+                <%= location %>
+                 &nbsp;
+                <%= message %> 
+              </li>
+            </script>
+          </ul>
+        </div>
+      </div>
 
 	</div>
 <div class = "container">
