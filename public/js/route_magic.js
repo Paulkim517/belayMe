@@ -29,7 +29,6 @@ jQuery(document).ready(function($) {
     // compile underscore template for nav links
     navTemplate: _.template($('#nav-template').html()),
     // get current (logged-in) user
-    console.log(navTemplate)
     showCurrentUser: function() {
       // AJAX call to server to GET /api/users/current
       $.get('/api/users/current', function(user) {
