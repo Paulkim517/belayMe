@@ -57,8 +57,10 @@ app.get('/', function (req, res) {
 // profile page
 app.get('/profile', function (req, res) {
   // check for current (logged-in) user
+  console.log("works")
   req.currentUser(function (err, user) {
     // show profile if logged-in user
+    console.log("yes")
     if (user) {
       res.sendFile(__dirname + '/public/views/profile.html');
       res.sendFile(__dirname + '/public/js/route_magic.js');
@@ -97,6 +99,60 @@ app.get('/logout', function (req, res) {
   res.redirect('/');
 });
 
+// API ROUTES
+
+// show current user
+app.get('/api/users/current', function (req, res) {
+  // check for current (logged-in) user
+  req.currentUser(function (err, user) {
+    res.json(user);
+  });
+});
+
+// create new post for current user
+app.post('/api/users/current/posts', function (req, res) {
+  // create new log with form data (`req.body`)
+  var newPost = new Post({
+    name: req.body.name,
+    location: req.body.location,
+    message: req.body.message
+  });
+
+  // save new post
+  newPost.save();
+
+  // find current user
+  req.currentUser(function (err, user) {
+    // embed new post in user's posts
+    user.posts.push(newLog);
+    // save user (and new post)
+    user.save();
+    // respond with new post
+    res.json(newPost);
+  });
+});
+
+// show all posts
+app.get('/api/posts', function (req, res) {
+  Post.find(function (err, posts) {
+    res.json(posts);
+  });
+});
+
+// create new post
+app.post('/api/posts', function (req, res) {
+  // create new post with form data (`req.body`)
+  var newPost = new Post({
+    name: req.body.name,
+    location: req.body.location,
+    message: req.body.message
+  });
+
+  // save new post
+  newPost.save(function (err, savedPost) {
+    res.json(savedLog);
+  });
+});
 
 // listen on port 3000
 app.listen(process.env.PORT || 3000)

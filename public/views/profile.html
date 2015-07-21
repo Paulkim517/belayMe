@@ -59,11 +59,91 @@
 	
 			</div> 
 		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/">New Trips</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" id="nav-links">
+<!-- underscore template for nav links -->
+          <script type="text/template" id="nav-template">
+            <% if (currentUser) { %>
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/logout">Log Out</a></li>
+            <% } else { %>
+              <li><a href="#" data-toggle="modal" data-target="#signup-modal">Sign Up</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#login-modal">Log In</a></li>
+            <% } %>
+          </script>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+
+  <!-- signup modal -->
+  <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signupModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+        </div>
+        <form method="post" action="/users">
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="text" name="user[firstName]" class="form-control" placeholder="First Name">
+            </div>
+            <div class="form-group">
+              <input type="text" name="user[lastName]" class="form-control" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+              <input type="text" name="user[avatar]" class="form-control" placeholder="Avatar (Image URL)">
+            </div>
+            <div class="form-group">
+              <input type="email" name="user[email]" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" name="user[password]" class="form-control" placeholder="Password">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" value="Sign Up" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- login modal -->
+  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Log In</h4>
+        </div>
+        <form method="post" action="/login">
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="email" name="user[email]" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" name="user[password]" class="form-control" placeholder="Password">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" value="Log In" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
 		<!-- map -->
 			<div class = "container">
 				<div class="col-md-11 col-lg-1  text-left">	
-					<iframe src="//www.mountainproject.com/scripts/AreaMap"></iframe>
+					<iframe src="//mountainproject.com/scripts/AreaMap"></iframe>
 				</div>	
 		  </div>
 
@@ -112,7 +192,8 @@
       </div>
 
 	</div>
-         
+        
+
 </section>
 
 
