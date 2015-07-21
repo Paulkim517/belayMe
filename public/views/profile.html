@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	
+	<title>BelayMe</title>
+
+	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
+	
+
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+
+	<link rel="stylesheet" href="css/route_style.css">
+
+
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<link href='//fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+
+<body class="theme-invert">
+
+<nav class="mainmenu">
+	<div class="container">
+		<div class="dropdown">
+			<button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+				<li><a href="#head" class="active">BelayMe</a></li>
+				<li><a href="#about">How's it work?</a></li>
+				<li><a href="#contact">Crush It!</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+
+<section class="section" id="head">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
+
+				
+				<h1 class="title" style="color:white;font-size:84px;">BelayMe</h1>
+			
+				
+				<h3 class="tagline" style="color:white;font-size:26px;">
+					Belay On.
+				</h3>
+				
+				
+				
+	
+			</div> 
+		</div>
+
+		<!-- map -->
+			<div class = "container">
+				<div class="col-md-11 col-lg-1  text-left">	
+					<iframe src="//www.mountainproject.com/scripts/AreaMap"></iframe>
+				</div>	
+		  </div>
+
+		<!-- form to enter new post -->
+		<div class = "container">
+			<div class="col-md-10 col-lg-2 col-md-offset-1 col-lg-offset-1 text-left">	
+				 <form id="new-post">
+						 <div class="form-group">
+              	<input type="text" class="form-control" placeholder="User Name" id="userId">
+            </div>
+          
+          <div class="form-group">
+              <select class="form-control" id="type">
+                <option disabled selected>Locations</option>
+                <option>El Capitan, Yosemite 37.7340° N, 119.6370° W</option>
+                <option>Happy Boulders, Bishop 	37.4156, -118.4482</option>
+                <option>Beaver Street Wall, San Francisco 	37.7655, -122.4368</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="3" placeholder="Message" id="requestForm"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Post" class="btn btn-primary btn-block">
+            </div>
+          </form>
+	    </div>
+    </div>  
+			
+
+			<!-- container for appended new post -->
+			<div class="col-md-8 col-sm-6">
+          <!-- list of posts -->
+          <ul class="list-group" id="post-list">
+            <!-- underscore template for posts -->
+            <script type="text/template" id="belay-template">
+              <li class="list-group-item">
+                <span class="label label-success"><%= user name %></span>
+                &nbsp;
+                <%= location %>
+                 &nbsp;
+                <%= message %> 
+              </li>
+            </script>
+          </ul>
+      </div>
+
+	</div>
+         
+</section>
+
+
+
+
+<!-- "About" section -->
+<section class="section" id="about">
+	<div class="container">
+	
+		<h2 class="text-center title" style="color:white;">How Does BelayMe work?</h2>
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-2">    
+				<h5><strong>Need someone to belay you?<br></strong></h5>
+				<p>Trying to find someone to make sure you're safe when climbing is hard. It's the crux in life for most climbers. With BelayMe you can post details of your next climb and have a trustworthy climbing partner to belay you or to make sure you don't go missing the in the wild! You'll climb with all levels and meet new people.</p>    
+			</div>
+			<div class="col-sm-4">
+				<h5><strong>Want to make new climbing buddies?<br></strong></h5>    
+				<p>Trying to make new friends in the world is scary but not with BelayMe. Whether you're a veteran looking for new buddies to climb with or a newbie looking for people to teach you, you can use BelayMe to help you in your search. Belay On!</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- contact section -->
+<section class="section" id="contact">
+	<div class="container">
+	
+		<h2 class="text-center title" style="color:white;">Clip in and belay on!</h2>
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<p class="lead">Reach out if you have any concerns! </p>
+				<p>Email me your questions.</p>
+				<p><b>paul@routesetter.com</b><br><br></p>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<!-- underscore -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- bootstrap -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<!-- modernizer -->
+<script src="assets/js/modernizr.custom.72241.js"></script>
+<!-- custom scripts -->
+<script src="js/route_magic.js"></script>
+
+
+</body>
+</html>
