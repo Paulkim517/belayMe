@@ -24,8 +24,5 @@ jQuery(document).ready(function($) {
 		return false;
 	});	
 
-	  // // compile underscore templates
-   //  template: _.template($('#belay-template').html()),
-   //  // logTemplate: _.template($('#user-log-template').html()),
 	
 });
