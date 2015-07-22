@@ -3,6 +3,9 @@ var express = require('express'),
     _ = require('underscore-node'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose');
+    Post = require('./models/post'),
+    User = require('./models/user'),
+    session = require('express-session');
 
 //connect to mongodb
 mongoose.connect(
@@ -150,7 +153,7 @@ app.post('/api/posts', function (req, res) {
 
   // save new post
   newPost.save(function (err, savedPost) {
-    res.json(savedLog);
+    res.json(savedPost);
   });
 });
 

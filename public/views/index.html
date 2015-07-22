@@ -59,12 +59,14 @@
 	
 			</div> 
 		</div>
+		
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/">New Trips</a></li>
+          <li><a href="/" id = "newClick">New Trips</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" id="nav-links">
-<!-- underscore template for nav links -->
+			
+			<!-- underscore template for nav links -->
           <script type="text/template" id="nav-template">
             <% if (currentUser) { %>
               <li><a href="/profile">Profile</a></li>
@@ -142,56 +144,54 @@
 
 		<!-- map -->
 			<div class = "container">
-				<div class="col-md-11 col-lg-1  text-left">	
-					<iframe src="//mountainproject.com/scripts/AreaMap"></iframe>
-				</div>	
-		  </div>
+				<!-- <div class="col-md-11 col-lg-1  text-left">	
+					
+				</div>	 -->
+		  
 
 		<!-- form to enter new post -->
-		<div class = "container">
-			<div class="col-md-10 col-lg-2 col-md-offset-1 col-lg-offset-1 text-left">	
+			<div class="col-md-4   text-left">	
+				<iframe src="//mountainproject.com/scripts/AreaMap"></iframe>
 				 <form id="new-post">
 						 <div class="form-group">
-              	<input type="text" class="form-control" placeholder="User Name" id="userId">
+              	<input type="text" class="form-control" placeholder="User Name" id="name">
             </div>
           
           <div class="form-group">
-              <select class="form-control" id="type">
+              <select class="form-control" id="location">
                 <option disabled selected>Locations</option>
-                <option>El Capitan, Yosemite 37.7340° N, 119.6370° W</option>
-                <option>Happy Boulders, Bishop 	37.4156, -118.4482</option>
-                <option>Beaver Street Wall, San Francisco 	37.7655, -122.4368</option>
+                <option>El Capitan, Yosemite 37°44'02.4"N 119°38'13.2"W</option>
+                <option>Happy Boulders, Bishop 	37°24'56.2"N 118°26'53.5"W</option>
+                <option>Beaver Street Wall, San Francisco 	37°45'55.8"N 122°26'12.5"W</option>
               </select>
             </div>
             <div class="form-group">
-              <textarea class="form-control" rows="3" placeholder="Message" id="requestForm"></textarea>
+              <textarea class="form-control" rows="3" placeholder="Message" id="message"></textarea>
             </div>
             <div class="form-group">
               <input type="submit" value="Post" class="btn btn-primary btn-block">
             </div>
           </form>
 	    </div>
-    </div>  
-			
-
+     
 			<!-- container for appended new post -->
-			<div class="col-md-8 col-sm-6">
-          <!-- list of posts -->
-          <ul class="list-group" id="post-list">
-            <!-- underscore template for posts -->
-            <script type="text/template" id="belay-template">
-              <li class="list-group-item">
-                <span class="label label-success"><%= name %></span>
-                &nbsp;
-                <%= location %>
-                 &nbsp;
-                <%= message %> 
-              </li>
-            </script>
-          </ul>
-      </div>
+				<div class="col-md-6 ">
+          	<!-- list of posts -->
+          	<ul class="list-group" id="post-list">
+            	<!-- underscore template for posts -->
+            	<script type="text/template" id="belay-template">
+              	<li class="list-group-item">
+                	<%= name %>
+                	&nbsp;
+                	<%= location %>
+                 	&nbsp;
+                	<%= message %> 
+              	</li>
+            	</script>
+          	</ul>
+      	</div>
+			</div>
 
-	</div>
         
 
 </section>
@@ -240,9 +240,10 @@
 <!-- bootstrap -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <!-- modernizer -->
-<script src="assets/js/modernizr.custom.72241.js"></script>
+<script src="js/modernizr.custom.72241.js"></script>
 <!-- custom scripts -->
 <script src="js/route_magic.js"></script>
+<script type="text/javascript" src="js/posts.js"></script>
 
 
 </body>

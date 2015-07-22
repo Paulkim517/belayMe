@@ -12,7 +12,7 @@ var UserSchema = new Schema({
   avatar: String,
   email: String,
   passwordDigest: String,
-  logs: [Log.schema]
+  posts: [Post.schema]
 });
 
 // create a new user with secure (hashed) password

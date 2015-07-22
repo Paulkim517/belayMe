@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 
 // define post schema
 var PostSchema = new Schema({
-  userName: String,
+  name: String,
   location: String,
   message: String
 });

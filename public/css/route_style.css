@@ -20,6 +20,15 @@ body {
 	font-weight: normal;
 }
 
+#stuff{
+	vertical-align: center;
+}
+
+.list-group-item{
+	color:black;
+	opacity:0.4555;;
+}
+
 iframe:focus { 
     outline: none;
 }
