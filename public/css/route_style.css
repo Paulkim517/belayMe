@@ -20,8 +20,8 @@ body {
 	font-weight: normal;
 }
 
-#stuff{
-	vertical-align: center;
+.menuColor{
+	color: #fff;
 }
 
 .list-group-item{
@@ -107,7 +107,7 @@ iframe[seamless] {
 	        border-radius: 2px;
 }
 .mainmenu .dropdown-menu a:hover { 
-	background:rgba(255,255,255,.1);
+	background:rgba(0,0,0,.1);
 	color:white;
 	padding:10px 8px 10px 12px;
 }
@@ -277,7 +277,7 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
   background: #333;
 }
 .theme-invert .mainmenu .dropdown-menu a { 
-	color:#000;
+	color:black;
 }
 .theme-invert .mainmenu .dropdown-menu a:hover { 
 	background:rgba(0,0,0,.1);
