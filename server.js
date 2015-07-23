@@ -18,6 +18,14 @@ mongoose.connect(
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 
+//middleware for cookies
+app.use(session({
+ saveUninitialized: true,
+ resave: true,
+ secret: 'SuperSecretCookie',
+ cookie: { maxAge: 60000 }
+}));
+
 // middleware to manage sessions
 app.use('/', function (req, res, next) {
   // saves userId in session for logged-in user
@@ -49,13 +57,13 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/views/index.html');
 });
 //get static js
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/public/js/route_magic.js');
-});
-//get static css
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/public/css/route_style.css' );
-});
+// app.get('/', function (req, res) {
+//   res.sendFile(__dirname + '/public/js/route_magic.js');
+// });
+// //get static css
+// app.get('/', function (req, res) {
+//   res.sendFile(__dirname + '/public/css/route_style.css' );
+// });
 
 // profile page
 app.get('/profile', function (req, res) {
@@ -66,8 +74,8 @@ app.get('/profile', function (req, res) {
     console.log("yes")
     if (user) {
       res.sendFile(__dirname + '/public/views/profile.html');
-      res.sendFile(__dirname + '/public/js/route_magic.js');
-      res.sendFile(__dirname + '/public/css/route_style.css' );
+      // res.sendFile(__dirname + '/public/js/route_magic.js');
+      // res.sendFile(__dirname + '/public/css/route_style.css' );
     // redirect if no user logged in
     } else {
       res.redirect('/');
@@ -77,21 +85,43 @@ app.get('/profile', function (req, res) {
 
 // AUTH ROUTES (SIGN UP, LOG IN, LOG OUT)
 
-// create new user with secure password
-app.post('/users', function (req, res) {
-  var newUser = req.body.user;
-  User.createSecure(newUser, function (err, user) {
-    // log in user immediately when created
-    req.login(user);
-    res.redirect('/profile');
+//SIGN UP STUFF
+// signup route with placeholder response
+app.get('/signup', function (req, res) {
+   req.currentUser(function (err, user) {
+    // redirect if current user
+    if (user) {
+      res.redirect('/profile');
+    } else {
+      res.sendFile(__dirname + '/public/views/signup.html');
+    }
   });
 });
+
+//user submits the signup form
+app.post('/users', function (req, res) {
+  // grab user data from params (req.body)
+  var newUser = req.body.user;
+  // create new user with secure password
+  User.createSecure(newUser.firstName, newUser.lastName, newUser.email, newUser.password, function (err, user) {
+    res.redirect('/login');
+  });
+});
+
+
+//LOGIN STUFF
+// login route (renders login view)
+app.get('/login', function (req, res) {
+  res.sendFile(__dirname + '/public/views/login.html');
+});
+
 
 // authenticate user and set session
 app.post('/login', function (req, res) {
   var userData = req.body.user;
   User.authenticate(userData.email, userData.password, function (err, user) {
     req.login(user);
+    //redirect to user profile
     res.redirect('/profile');
   });
 });
@@ -101,6 +131,18 @@ app.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/');
 });
+
+
+
+// // user profile page
+// app.get('/profile', function (req, res) {
+//   // finds user currently logged in
+//   req.currentUser(function (err, user) {
+//     res.send('Welcome ' + user.email);
+//   });
+// });
+
+
 
 // API ROUTES
 

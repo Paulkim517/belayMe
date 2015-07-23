@@ -5,6 +5,7 @@ html {
 	   -moz-background-size: cover;
 	     -o-background-size: cover;
 	        background-size: cover;
+
 }
 
 body {
@@ -20,15 +21,29 @@ body {
 	font-weight: normal;
 }
 
+h1.title{
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
 .menuColor{
 	color: #fff;
 }
 
+h3.tagline{
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
 .list-group-item{
 	color:black;
 	opacity:0.4555;;
 }
 
+
+h2.how-to{
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+p.lead{
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
 iframe:focus { 
     outline: none;
 }
