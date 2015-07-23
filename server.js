@@ -56,14 +56,6 @@ app.use('/', function (req, res, next) {
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/views/index.html');
 });
-//get static js
-// app.get('/', function (req, res) {
-//   res.sendFile(__dirname + '/public/js/route_magic.js');
-// });
-// //get static css
-// app.get('/', function (req, res) {
-//   res.sendFile(__dirname + '/public/css/route_style.css' );
-// });
 
 // profile page
 app.get('/profile', function (req, res) {
@@ -74,8 +66,6 @@ app.get('/profile', function (req, res) {
     console.log("yes")
     if (user) {
       res.sendFile(__dirname + '/public/views/profile.html');
-      // res.sendFile(__dirname + '/public/js/route_magic.js');
-      // res.sendFile(__dirname + '/public/css/route_style.css' );
     // redirect if no user logged in
     } else {
       res.redirect('/');
@@ -93,7 +83,7 @@ app.get('/signup', function (req, res) {
     if (user) {
       res.redirect('/profile');
     } else {
-      res.sendFile(__dirname + '/public/views/signup.html');
+      res.sendFile(__dirname + '/public/views/signUp.html');
     }
   });
 });
@@ -131,17 +121,6 @@ app.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/');
 });
-
-
-
-// // user profile page
-// app.get('/profile', function (req, res) {
-//   // finds user currently logged in
-//   req.currentUser(function (err, user) {
-//     res.send('Welcome ' + user.email);
-//   });
-// });
-
 
 
 // API ROUTES
