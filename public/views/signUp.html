@@ -42,24 +42,23 @@
         <hr>
 
         <!-- method and action refer to the request type (post) and request url (/login) -->
-        <form method="post" action="/users">
+        <form method="post" action="/users" id="signup-form">
         	
         	<div class="form-group">
-        		 <input type="text" name="user[firstName]" class="form-control" placeholder="First Name" autofocus>
+        		 <input type="text" name="user[firstName]" class="form-control" minlength="2" placeholder="First Name" autofocus required>
         	</div>
         	
         	<div class="form-group">
-        		 <input type="text" name="user[lastName]" class="form-control" placeholder="Last Name" autofocus>
+        		 <input type="text" name="user[lastName]" class="form-control" placeholder="Last Name" autofocus required>
         	</div>
 
           <div class="form-group">
 
-            <!-- the `name` HTML attribute sends form data to the server -->
-            <!-- setting the names `user[email]` and `user[password]` allows us to use `req.body.user` on the server-side, which gives us a user object with `email` and `password` keys -->
-            <input type="text" name="user[email]" class="form-control" placeholder="Email" autofocus>
+           
+            <input type="text" name="user[email]" class="form-control" placeholder="Email" autofocus required>
           </div>
           <div class="form-group">
-            <input type="password" name="user[password]" class="form-control" placeholder="Password">
+            <input type="password" name="user[password]" class="form-control" placeholder="Password" autofocus required>
           </div>
           <div class="form-group">
             <input type="submit" value="Log In" class="btn btn-primary">
@@ -83,7 +82,6 @@
 <!-- custom scripts -->
 <script src="js/route_magic.js"></script>
 <script type="text/javascript" src="js/posts.js"></script>
-
 
 </body>
 </html>

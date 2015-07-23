@@ -169,7 +169,7 @@ app.post('/api/users/current/posts', function (req, res) {
   // find current user
   req.currentUser(function (err, user) {
     // embed new post in user's posts
-    user.posts.push(newLog);
+    user.posts.push(newPost);
     // save user (and new post)
     user.save();
     // respond with new post

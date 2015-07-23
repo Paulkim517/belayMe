@@ -43,4 +43,9 @@ jQuery(document).ready(function($) {
   };
 
   mainController.showCurrentUser();
+
+
 });
+
+
+
