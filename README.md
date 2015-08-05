@@ -22,4 +22,4 @@ This app requires the following steps:
 In order to run locally, this app requires the following node modules:body-parser,express,express-session,mongoose,underscore
 
 ##Check it out!
-www.belayme.herokuapp.com
+belayme.herokuapp.com
